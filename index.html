@@ -3,472 +3,207 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>One Question...</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+<title>Just One Question ❤️</title>
 
 <style>
-
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
+font-family:Arial,sans-serif;
 }
 
 body{
-
-font-family:Poppins,sans-serif;
-height:100vh;
+background:linear-gradient(135deg,#ffd6e7,#ffeef5);
 overflow:hidden;
+height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-
-background:
-linear-gradient(#090010,#170022,#32002e);
-
-color:white;
-
 }
 
-/* Moon */
-
-.moon{
-
-position:absolute;
-top:70px;
-right:80px;
-
-width:130px;
-height:130px;
-
-border-radius:50%;
-
-background:#f7f2ff;
-
-box-shadow:
-0 0 40px white,
-0 0 80px #b67fff;
-
-animation:moonGlow 3s infinite alternate;
-
-}
-
-@keyframes moonGlow{
-
-from{
-box-shadow:0 0 30px white;
-}
-
-to{
-box-shadow:0 0 80px #ff3b93;
-}
-
-}
-
-/* Clouds */
-
-.cloud{
-
-position:absolute;
-
-background:rgba(255,255,255,.08);
-
-border-radius:50px;
-
-filter:blur(4px);
-
-animation:cloud 45s linear infinite;
-
-}
-
-.cloud:nth-child(2){
-
-top:90px;
-left:-250px;
-
-width:240px;
-height:70px;
-
-}
-
-.cloud:nth-child(3){
-
-top:180px;
-left:-350px;
-
-width:330px;
-height:90px;
-
-animation-duration:60s;
-
-}
-
-@keyframes cloud{
-
-from{
-
-transform:translateX(0);
-
-}
-
-to{
-
-transform:translateX(180vw);
-
-}
-
-}
-
-/* bats */
-
-.bat{
-
-position:absolute;
-
-font-size:30px;
-
-animation:fly linear infinite;
-
-opacity:.75;
-
-}
-
-@keyframes fly{
-
-0%{
-
-transform:translate(-10vw,110vh) rotate(0);
-
-}
-
-100%{
-
-transform:translate(110vw,-20vh) rotate(360deg);
-
-}
-
-}
-
-/* card */
-
-.card{
-
-background:rgba(15,10,20,.85);
-
-padding:40px;
-
-border-radius:24px;
-
-width:min(90%,420px);
-
+.container{
 text-align:center;
-
-border:1px solid #ff3b93;
-
-box-shadow:
-
-0 0 20px #ff3b93;
-
-backdrop-filter:blur(8px);
-
+position:relative;
+z-index:2;
 }
 
-.icon{
-
-font-size:80px;
-
-margin-bottom:15px;
-
-animation:float 2.5s infinite;
-
+.bear{
+font-size:90px;
+animation:bounce 2s infinite;
 }
 
-@keyframes float{
-
-50%{
-
-transform:translateY(-10px);
-
-}
-
+@keyframes bounce{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-15px);}
 }
 
 h1{
-
-font-family:Cinzel,serif;
-
-color:#ffd6ec;
-
-margin-bottom:15px;
-
+font-size:2.2rem;
+color:#ff4d88;
+margin:20px;
+animation:float 2s infinite;
 }
 
-p{
-
-margin-bottom:30px;
-
-color:#ddd;
-
+@keyframes float{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-6px);}
 }
 
 .buttons{
-
+margin-top:25px;
 position:relative;
-
-height:160px;
-
+height:180px;
 }
 
 button{
-
-padding:15px 34px;
-
-font-size:20px;
-
+padding:15px 35px;
+font-size:22px;
 border:none;
-
 border-radius:40px;
-
 cursor:pointer;
-
-transition:.3s;
-
+transition:.25s;
+box-shadow:0 8px 20px rgba(0,0,0,.15);
 }
 
 #yes{
-
-background:#ff3b93;
-
+background:#ff4d88;
 color:white;
-
-box-shadow:0 0 20px #ff3b93;
-
+margin-right:20px;
+animation:pulse 1.4s infinite;
 }
 
-#yes:hover{
-
-transform:scale(1.08);
-
+@keyframes pulse{
+50%{transform:scale(1.08);}
 }
 
 #no{
-
+background:white;
+color:#ff4d88;
 position:absolute;
-
-background:#111;
-
-color:white;
-
-border:2px solid #ff3b93;
-
-left:210px;
-
-top:0;
-
 }
 
 #result{
-
 display:none;
-
-font-size:20px;
-
-line-height:1.7;
-
-animation:fade .8s;
-
+font-size:2rem;
+color:#ff4d88;
+animation:pop .8s;
 }
 
-@keyframes fade{
+@keyframes pop{
+from{transform:scale(.5);opacity:0;}
+to{transform:scale(1);opacity:1;}
+}
 
-from{
+.heart{
+position:absolute;
+font-size:24px;
+animation:rise 6s linear infinite;
+opacity:.8;
+}
 
+@keyframes rise{
+0%{
+transform:translateY(100vh) scale(.5);
 opacity:0;
-transform:scale(.8);
-
 }
-
-to{
-
-opacity:1;
-transform:scale(1);
-
+20%{opacity:1;}
+100%{
+transform:translateY(-120vh) scale(1.4);
+opacity:0;
 }
-
 }
-
-/* mobile */
-
-@media(max-width:600px){
-
-.card{
-
-padding:30px 20px;
-
-}
-
-#no{
-
-left:150px;
-
-}
-
-.moon{
-
-width:90px;
-height:90px;
-right:20px;
-
-}
-
-}
-
 </style>
-
 </head>
 
 <body>
 
-<!-- optional music -->
-<audio autoplay loop>
-<source src="music.mp3" type="audio/mpeg">
-</audio>
+<div class="container">
 
-<div class="moon"></div>
+<div class="bear">🧸</div>
 
-<div class="cloud"></div>
-<div class="cloud"></div>
-
-<div class="card">
-
-<div class="icon">🦇</div>
-
-<h1 id="title">wanna go for a date ?</h1>
-
-<p id="question">
-say yes neko 🖤
-</p>
+<h1 id="question">
+Will you go on a date with me? 🥺❤️
+</h1>
 
 <div class="buttons" id="buttons">
 
-<button id="yes">
-Yes 🖤
-</button>
+<button id="yes">Yes 💖</button>
 
-<button id="no">
-No
-</button>
+<button id="no">No 🙈</button>
 
 </div>
 
 <div id="result">
-
-<h2>🖤</h2>
-
-<p id="type"></p>
-
+🎉 YAYYY!! ❤️<br><br>
+You just made my day 🥹💕
 </div>
 
 </div>
 
 <script>
 
+const no=document.getElementById("no");
+const buttons=document.getElementById("buttons");
+
 const texts=[
-"Really? 🥺",
-"Think again 🖤",
-"Pretty please 🥀",
-"No isn't allowed 😈",
-"Come on ❤️"
+"Are you sure? 🥺",
+"Think again 💕",
+"Please? 🌸",
+"One more chance 🥹",
+"I'll buy snacks 🍫",
+"Pretty please ❤️"
 ];
 
-let i=0;
+let count=0;
 
-const no=document.getElementById("no");
+no.addEventListener("click",move);
+no.addEventListener("mouseover",move);
 
 function move(){
 
-if(i<texts.length){
+count++;
 
-no.innerHTML=texts[i];
-i++;
-
+if(count<texts.length){
+no.innerHTML=texts[count];
 }
 
-const x=Math.random()*220;
-
-const y=Math.random()*110;
+const x=Math.random()*250;
+const y=Math.random()*120;
 
 no.style.left=x+"px";
-
 no.style.top=y+"px";
-
 }
-
-no.addEventListener("mouseover",move);
-
-no.addEventListener("click",move);
 
 document.getElementById("yes").onclick=function(){
 
-document.getElementById("buttons").style.display="none";
-
-document.getElementById("title").innerHTML="You Chose yes ";
-
 document.getElementById("question").style.display="none";
-
+buttons.style.display="none";
 document.getElementById("result").style.display="block";
 
-const text=
-"From this moment on,i will keep u stay out form ur boresom. 🖤\n\n kepp in thoch tho  🌙🥀";
-
-let j=0;
-
-function type(){
-
-if(j<text.length){
-
-document.getElementById("type").innerHTML+=text.charAt(j);
-
-j++;
-
-setTimeout(type,35);
+setInterval(createHeart,120);
 
 }
 
-}
+function createHeart(){
 
-type();
+const heart=document.createElement("div");
 
-};
+heart.className="heart";
 
-function bat(){
+heart.innerHTML=Math.random()>0.5?"❤️":"💖";
 
-const b=document.createElement("div");
+heart.style.left=Math.random()*100+"vw";
 
-b.className="bat";
+heart.style.fontSize=(20+Math.random()*25)+"px";
 
-b.innerHTML="🦇";
-
-b.style.left="-10vw";
-
-b.style.top=Math.random()*90+"vh";
-
-b.style.animationDuration=(8+Math.random()*8)+"s";
-
-b.style.fontSize=(20+Math.random()*20)+"px";
-
-document.body.appendChild(b);
+document.body.appendChild(heart);
 
 setTimeout(()=>{
-
-b.remove();
-
-},16000);
+heart.remove();
+},6000);
 
 }
-
-setInterval(bat,1200);
 
 </script>
 
